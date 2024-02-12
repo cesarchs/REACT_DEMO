@@ -1,0 +1,12 @@
+{
+  "name": "react_demo",
+  "version": "1.0.0",
+  "description": "React Demo utilizando distintos empaquetadores de aplicaciones web.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
