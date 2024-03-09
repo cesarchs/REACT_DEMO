@@ -1,35 +1,65 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
+import { TwitterFollowCard } from "./TwitterFollowCard";
 
-function App() {
-  const [count, setCount] = useState(0)
+const users = [
+  {
+    userName: "cesarchs",
+    name: "Cesar Chamale",
+    isFollowing: true,
+  },
+  {
+    userName: "marcoss",
+    name: "marquinios",
+    isFollowing: false,
+  },
+  {
+    userName: "gabi_munoz",
+    name: "gabriela muñoz",
+    isFollowing: true,
+  },
+];
 
+export function App() {
+  const [isFollowing, setIsFollowing] = useState(true);
+  console.log(" [App] render estado inicial en App: ", isFollowing);
+
+  /*
+  SE PUEDE DE CUALQUIERA DE LAS 2 MANERAS, EJEMPLO DE FUNCION FLECHA
+  users.map((user) => {
+    console.log(user);
+  });
+
+  users.map(({userName,name,isFollowing}) =>
+  console.log(userName,name, isFollowing)
+  );
+*/ 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    // con el return le decimos lo que tiene que renderizar
+    <section className="App">
+      {users.map((user) => {
+        const { userName, name, isFollowing } = user;
+        return (
+          <TwitterFollowCard
+            userName={userName}
+            initialIsFollowing={isFollowing}
+            key={userName}
+          >
+            {name}
+          </TwitterFollowCard>
+        );
+      })}
 
-export default App
+      <TwitterFollowCard userName="cesarchs" initialIsFollowing={isFollowing}>
+        Leonel Sican
+      </TwitterFollowCard>
+      <TwitterFollowCard userName="marcoss" name="Marcos kw" />
+      <button
+        className="tw-followCard-button"
+        onClick={() => setIsFollowing(!isFollowing)}
+      >
+        Cambiar de estado a prop en padre
+      </button>
+    </section>
+  );
+}
