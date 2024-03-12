@@ -71,7 +71,23 @@ const ShowProducts = () => {
             </div>
         </div>
 
-        <div className='modal fade'></div>
+        <div id ='modalProducts' className='modal fade' aria-hidden= 'true'>
+            <div className='modal-dialog'>
+                <div className='modal-content'>
+                    <div className='modal-header'>
+                        <label className='h5'>{title}</label>
+                        <button type='button' className='btn-close' data-bs-dismiss='modal' aria-label='close'></button>
+                    </div>
+                    <div className='modal-body'>
+                        <input type='hidden' id='id'></input>
+                        <div className='input-group mb-3'>
+                            <span className='input-group-text'><i className='fa-solid fa-gift' ></i></span>
+                            <input type='text' id='nombre' className='form-control' placeholder='Nombre' value = {name} onChange={(e)=> setName(e.target.value)}></input>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
   )
 }
