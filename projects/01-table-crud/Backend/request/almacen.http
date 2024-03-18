@@ -1,0 +1,29 @@
+
+GET http://localhost:3005/
+
+### Crear un producto impelmentando store procedure
+
+POST http://localhost:3005/addProducto
+Content-Type: application/json
+    
+    {
+        "product_name": "PRODUCTO 2",
+        "product_stock": "12",
+        "product_description": "DESCRIPCION 2",
+        "product_price": "222"
+    }
+
+###
+
+PUT http://localhost:3005/updateProducto/9
+Content-Type: application/json
+
+    {
+        "product_name": "ACETAMENOFEN",
+        "product_stock": "54321",
+        "product_description": "DESCRIPCION EDITADA",
+        "product_price": "222"
+    }
+
+###
+DELETE http://localhost:3005/deleteProducto/13
